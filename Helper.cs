@@ -228,7 +228,7 @@ public static class Helper
                 verticalIndent = 0;
             for (int j = 0; j < maxColumnLength; ++j)
             {
-                returnString   += $"{GoToLineChar(line + verticalIndent, chr + horizontalIndent)}{(i == 0 ? (j == 0 ? "╔" : "╠") : (j == 0 ? "╦" : "╬"))}{"═".Multiply(columnWidth)}{(j == 0 ? "╗" : "╣").Multiply(i == menuItems.Length - 1 ? 1 : 0)}{GoToLineChar(line + verticalIndent + 1, chr + horizontalIndent)}║{(j >= menuItems[i].Length ? " ".Multiply(columnWidth) : menuItems[i][j] + " ".Multiply(columnWidth - menuItems[i][j].Length))}{"║".Multiply(i == menuItems.Length - 1 ? 1 : 0)}{(GoToLineChar(line + verticalIndent + 2, chr + horizontalIndent))}{(i == 0 ? "╚" : "╩")}{"═".Multiply(columnWidth)}{"╝".Multiply(i == menuItems.Length - 1 ? 1 : 0).Multiply(j == maxColumnLength - 1 ? 1 : 0)}";
+                returnString   += $"{GoToLineChar(line + verticalIndent, chr + horizontalIndent)}{(i == 0 ? j == 0 ? "╔" : "╠" : j == 0 ? "╦" : "╬")}{"═".Multiply(columnWidth)}{(j == 0 ? "╗" : "╣").Multiply(i == menuItems.Length - 1 ? 1 : 0)}{GoToLineChar(line + verticalIndent + 1, chr + horizontalIndent)}║{(j >= menuItems[i].Length ? " ".Multiply(columnWidth) : menuItems[i][j] + " ".Multiply(columnWidth - menuItems[i][j].Length))}{"║".Multiply(i == menuItems.Length - 1 ? 1 : 0)}{GoToLineChar(line + verticalIndent + 2, chr + horizontalIndent)}{(i == 0 ? "╚" : "╩")}{"═".Multiply(columnWidth)}{"╝".Multiply(i == menuItems.Length - 1 ? 1 : 0).Multiply(j == maxColumnLength - 1 ? 1 : 0)}";
                 verticalIndent += 2;
             }
 

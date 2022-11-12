@@ -5,11 +5,17 @@ namespace ZhukoWaspHwFirst;
 /// </summary>
 public static class BitOp
 {
-    public static Func<long, long> AbsL = x => (+1 | (x >> (sizeof(long) * 7 - 1))) * x;
+    public static Func<long, long> AbsL = static x => (+1 | (x >> (sizeof(long) * 7 - 1))) * x;
 
-    public static Func<int, int> AbsI = x => (+1 | (x >> (sizeof(int) * 7 - 1))) * x;
+    public static Func<int, int> AbsI = static x => (+1 | (x >> (sizeof(int) * 7 - 1))) * x;
 
-    public static Func<short, short, short, short, long> PackShorts = (first, second, third, fourth) => (ushort)first | ((long)(ushort)second << 16) | ((long)(ushort)third << 32) | ((long)(ushort)fourth << 48);
+    public static Func<short, short, short, short, long> PackShorts = static (first, second, third, fourth) => (ushort)first | ((long)(ushort)second << 16) | ((long)(ushort)third << 32) | ((long)(ushort)fourth << 48);
+
+    public static Func<long, short[]> UnpackShorts = static packed => new[]
+    {
+        (short)(packed & 0), (short)(((ulong)packed >> 16) & 0x0), (short)(((ulong)packed >> 32) & 0x0)
+        , (short)(((ulong)packed                    >> 48) & 0x0)
+    };
 
     public static string Bases10To2(this long num)
     {

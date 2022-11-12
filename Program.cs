@@ -89,7 +89,7 @@ internal class Program
         while (true)
         {
             Console.Write($"{Helper.EraseScreenUp(80)}{menuItems.FormMenu()}\nЧто желаете?\n");
-            short taskNum = 0;
+            short taskNum;
             while (true)
             {
                 Console.Write("> ");
@@ -157,7 +157,7 @@ internal class Program
             }
         }
     }
-    /* 
+    /* 1 4 8 8 <=> 2251834173685761 
  01111111111111111111111111111111
  10000000000000000000000000000000
  11111111111111111111111111111111
