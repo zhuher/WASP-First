@@ -13,8 +13,8 @@ public static class BitOp
 
     public static Func<long, short[]> UnpackShorts = static packed => new[]
     {
-        (short)(packed & 0), (short)(((ulong)packed >> 16) & 0x0), (short)(((ulong)packed >> 32) & 0x0)
-        , (short)(((ulong)packed                    >> 48) & 0x0)
+        (short)(packed | 0), (short)(((ulong)packed >> 16) | 0x0), (short)(((ulong)packed >> 32) | 0x0)
+        , (short)(((ulong)packed                    >> 48) | 0x0)
     };
 
     public static string Bases10To2(this long num)

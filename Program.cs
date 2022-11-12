@@ -77,7 +77,7 @@ internal class Program
     private static string TwoThree(short first, short second, short third, short fourth) => $"{BitOp.PackShorts(first, second, third, fourth)}";
 
     private static string TwoFour(long packed)
-        => $"{packed.Bases10To2().UnpackShorts()[0]} {packed.Bases10To2().UnpackShorts()[1]} {packed.Bases10To2().UnpackShorts()[2]} {packed.Bases10To2().UnpackShorts()[3]}";
+        => $"{BitOp.UnpackShorts(packed)[0]} {BitOp.UnpackShorts(packed)[1]} {BitOp.UnpackShorts(packed)[2]} {BitOp.UnpackShorts(packed)[3]}";
 
     private static void Main(string[] args)
     {
