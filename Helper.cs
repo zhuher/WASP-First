@@ -41,11 +41,11 @@ public static class Helper
         return new String(chars);
     }
 
-    public static int Max(int a, int b) => a > b
+    public static Func<int, int, int> Max = static (a, b) => a > b
         ? a
         : b;
 
-    public static int Min(int a, int b) => a > b
+    public static Func<int, int, int> Min = static (a, b) => a > b
         ? b
         : a;
 
@@ -124,7 +124,7 @@ public static class Helper
             : result;
     }
 
-    public static string Base10ToAny(this long num, int toBase)
+    public static string Bases10ToAny(this long num, int toBase) //UNUSED
     {
         string result   = "";
         bool   negative = false;
@@ -154,7 +154,7 @@ public static class Helper
             : result;
     }
 
-    public static string Base10ToAny(this ulong num, int toBase)
+    public static string Bases10ToAny(this ulong num, int toBase) //UNUSED
     {
         string result = "";
         if (toBase is < 2 or > 36)

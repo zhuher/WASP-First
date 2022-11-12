@@ -64,26 +64,20 @@ internal class Program
         return toPrint;
     }
 
-    private static string TwoOne(long num) => num.Base10ToAny(2);
+    private static string TwoOne(long num) => num.Bases10To2();
 
     private static string TwoTwo(long a, long b)
     {
         long sum = a + b;
-        return $"{'0'.Multiply(sum.Base10ToAny(2).Length - a.Base10ToAny(2).Length)}{a.Base10ToAny(2)}\n{'+'.Multiply(sum.Base10ToAny(2).Length)}\n{'0'.Multiply(sum.Base10ToAny(2).Length - b.Base10ToAny(2).Length)}{b.Base10ToAny(2)}\n{'='.Multiply(sum.Base10ToAny(2).Length)}\n{sum.Base10ToAny(2)}";
+        return $"{'0'.Multiply(sum.Bases10To2().Length - a.Bases10To2().Length)}{a.Bases10To2()}\n{'+'.Multiply(sum.Bases10To2().Length)}\n{'0'.Multiply(sum.Bases10To2().Length - b.Bases10To2().Length)}{b.Bases10To2()}\n{'='.Multiply(sum.Bases10To2().Length)}\n{sum.Bases10To2()}";
     }
 
-/*    private static string Test()
-    {
-        string result = "";
-        for (int i = 0; i <= "ZZ".BasesAnyTo10(36); ++i) result += $"{'0'.Multiply("ZZ".Length - ((long)i).Base10ToAny(36).Length)}{((long)i).Base10ToAny(36)}\n";
-
-        return result;
-    }*/
+    private static string Test(long num) => num.Bases10To2();
 
     private static string TwoThree(short first, short second, short third, short fourth) => $"{BitOp.PackShorts(first, second, third, fourth)}";
 
     private static string TwoFour(long packed)
-        => $"{packed.Base10ToAny(2).UnpackShorts()[0]} {packed.Base10ToAny(2).UnpackShorts()[1]} {packed.Base10ToAny(2).UnpackShorts()[2]} {packed.Base10ToAny(2).UnpackShorts()[3]}";
+        => $"{packed.Bases10To2().UnpackShorts()[0]} {packed.Bases10To2().UnpackShorts()[1]} {packed.Bases10To2().UnpackShorts()[2]} {packed.Bases10To2().UnpackShorts()[3]}";
 
     private static void Main(string[] args)
     {
@@ -91,7 +85,7 @@ internal class Program
         //TODO: Document every method
         //TODO: Cleanup types also faf0ba is a nice colour
         //╝╗╔╚╣╩╦╠═║╬
-        string[][] menuItems = { new[] { "11", "12", "14", "21", "22", "23", "24" }, new[] { "Волшебные числа", "Дальше - меньше", "Треугольник Паскаля", "Двоичная система", "Сложение в столбик", "Упаковка шортиков", "Распаковка шортиков" } };
+        string[][] menuItems = { new[] { "11", "12", "14", "21", "22", "23", "24", "69" }, new[] { "Волшебные числа", "Дальше - меньше", "Треугольник Паскаля", "Двоичная система", "Сложение в столбик", "Упаковка шортиков", "Распаковка шортиков", "TEST" } };
         while (true)
         {
             Console.Write($"{Helper.EraseScreenUp(80)}{menuItems.FormMenu()}\nЧто желаете?\n");
@@ -129,7 +123,7 @@ internal class Program
                     Console.ReadKey();
                     break;
                 case 14:
-                    Console.WriteLine("Введите кол-во рядов треугольника Паскаля.");
+                    Console.WriteLine("Введите кол-во рядов треугольника Паскаля. 27 и более будет слишком широко!");
                     Console.WriteLine(OneFour(Convert.ToInt32(Console.ReadLine())));
                     Console.ReadKey();
                     break;
@@ -151,6 +145,11 @@ internal class Program
                 case 24:
                     Console.WriteLine("Введите число для перевода в двоичную систему.");
                     Console.WriteLine(TwoFour(Convert.ToInt64(Console.ReadLine())));
+                    Console.ReadKey();
+                    break;
+                case 69:
+                    Console.WriteLine("Введите число.");
+                    Console.WriteLine(Test(Convert.ToInt64(Console.ReadLine())));
                     Console.ReadKey();
                     break;
                 case -1: return;

@@ -10,6 +10,21 @@ public static class BitOp
     public static Func<int, int> AbsI = x => (+1 | (x >> (sizeof(int) * 7 - 1))) * x;
 
     public static Func<short, short, short, short, long> PackShorts = (first, second, third, fourth) => (ushort)first | ((long)(ushort)second << 16) | ((long)(ushort)third << 32) | ((long)(ushort)fourth << 48);
+
+    public static string Bases10To2(this long num)
+    {
+        string result      = "";
+        long   mask        = 1L << 63;
+        bool   trim = true;
+        for (byte i = 0; i < 64; ++i)
+        {
+            trim   =  trim && (num & mask) == 0;
+            result += $"{((num & mask) == 0 ? '0' : '1').Multiply(trim ? 0 : 1)}";
+            mask   =  (long)((ulong)mask >> 1);
+        }
+
+        return result;
+    }
     //public static int ShiftRight
     //public static ulong PackShorts(short first, short second, ushort third, short fourth) => ;
 
