@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ZhukoWaspHwFirst;
+﻿namespace ZhukoWaspHwFirst;
 
 internal class Program
 {
